@@ -2,11 +2,25 @@
 
 ## VPS
 
-Provider: AWS Lightsail  
-OS: Ubuntu 24.04 LTS  
-Region: Singapore  
+- Main node provider: AWS Lightsail
+- Panel provider: RackNerd
+- Second node provider: Bandwagon
+- OS: Ubuntu 24.04 LTS
+- Main region: Singapore
 
 I picked AWS Lightsail because it is simple like a normal VPS. I picked Singapore because it was easy to set up and should be stable enough.
+
+## VPS roles
+
+This is the layout I ended up using:
+
+| VPS | Role | What it does |
+| --- | --- | --- |
+| RackNerd VPS | Marzban panel | Holds the dashboard, users, and subscription links |
+| AWS Lightsail VPS | Marzban node | Runs Xray/VLESS/REALITY for VPN traffic |
+| Bandwagon VPS | Marzban node | Runs another Xray/VLESS/REALITY node |
+
+The important point is that the RackNerd VPS is not the main VPN node. It is the panel server. AWS and Bandwagon are the actual nodes.
 
 ## Basic commands
 
@@ -43,9 +57,9 @@ At first I looked at 3x-ui, but it was more for managing VPN nodes on one VPS. I
 
 My setup became:
 
-- one Marzban panel server
-- AWS node
-- Bandwagon node
+- RackNerd VPS as the Marzban panel server
+- AWS Lightsail VPS as a Marzban node
+- Bandwagon VPS as a Marzban node
 - subscription link imported into Shadowrocket
 
 I also tried post quantum VLESS encryption with `xray vlessenc`. It needed a newer Xray version. Some nodes failed when they were still using old Xray, so I had to point Marzban and nodes to the newer Xray binary.
@@ -61,4 +75,3 @@ sudo mkswap /swapfile
 sudo swapon /swapfile
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 ```
-

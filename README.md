@@ -18,6 +18,14 @@ Set up and manage a VPS based VPN/proxy server using Xray, VLESS, REALITY, and c
 - Client: Shadowrocket / Hiddify
 - Management: Marzban / Marzban Node
 
+## Server Layout
+
+- RackNerd VPS: Marzban panel server
+- AWS Lightsail VPS: Marzban node for VPN traffic
+- Bandwagon VPS: Marzban node for VPN traffic
+
+The RackNerd VPS is mainly the control panel. The AWS and Bandwagon VPSs are the nodes that actually run the proxy traffic.
+
 ## Files
 
 - `setup.md` - installation and setup notes
@@ -25,9 +33,8 @@ Set up and manage a VPS based VPN/proxy server using Xray, VLESS, REALITY, and c
 - `troubleshooting.md` - problems and fixes
 - `configs/` - example configs with secrets removed
 - `scripts/` - useful Linux check scripts
-- `journal/` - cleaned notes from my Notion journal
+- `journal/` - cleaned notes from my Notion journal, split by date
 
 ## Screenshots
 
 Some screenshots are in `journal/images/`. I only kept simple ones that do not show real server secrets.
-

@@ -46,7 +46,7 @@ sudo swapon /swapfile
 
 ## Problem: Marzban node using old Xray
 
-Cause: Marzban panel had a newer Xray, but the nodes were still using old Xray.
+Cause: the RackNerd Marzban panel had a newer Xray, but the AWS and Bandwagon nodes were still using old Xray.
 
 Fix: point Marzban and Marzban Node to the newer Xray path:
 
@@ -60,9 +60,10 @@ For Docker nodes, also mount the folder:
 - /var/lib/marzban:/var/lib/marzban
 ```
 
+The RackNerd VPS is the panel, so node problems are usually checked on AWS or Bandwagon first.
+
 ## Problem: Proxy conflict
 
 I tested my VPN while another VPN was already connected. It made the client act weird and timeout for a while.
 
 Fix: turn off other VPN/proxy apps before testing this one.
-
