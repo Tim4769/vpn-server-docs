@@ -10,9 +10,12 @@ Set up and manage a VPS based VPN/proxy server using Xray, VLESS, REALITY, and c
 
 ## Stack
 
-- VPS: AWS Lightsail / Linux VPS
-- OS: Ubuntu 24.04 LTS
-- Region: Singapore
+- Panel VPS: RackNerd
+- Node VPSs: AWS Lightsail and BandwagonHost
+- AWS node OS: Ubuntu 24.04 LTS
+- Bandwagon node OS: Ubuntu 26.04 x86_64
+- Main AWS region: Singapore
+- Bandwagon location: US, California
 - Proxy core: Xray
 - Protocol: VLESS + REALITY
 - Client: Shadowrocket / Hiddify
@@ -48,6 +51,19 @@ The AWS and Bandwagon nodes use the same server idea: Marzban Node, Xray, VLESS,
 | Disk notes | not posted in public notes | 20 GB disk |
 | Bandwidth notes | not posted in public notes | 1 TB monthly bandwidth |
 | Public server info | redacted in public repo | redacted in public repo |
+
+## Current Xray Config
+
+The example config in `configs/xray-config.example.json` matches my current setup shape, but the key fields are still redacted.
+
+- inbound tag: `VLESS TCP REALITY`
+- port: `443`
+- REALITY destination/SNI: `www.cloudflare.com`
+- clients list: empty in this public example
+- sniffing: disabled
+- routing: private IP ranges go to `BLOCK`
+- outbounds: `DIRECT` for normal traffic and `BLOCK` for blocked traffic
+- logs: access, error, and loglevel are all set to `none`
 
 ## Files
 

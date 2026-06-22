@@ -1,62 +1,64 @@
 {
   "log": {
     "access": "none",
-    "error": "/var/log/xray/error.log",
-    "loglevel": "warning",
+    "error": "none",
+    "loglevel": "none",
     "dnsLog": false,
     "maskAddress": "full"
   },
+  "routing": {
+    "rules": [
+      {
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "BLOCK",
+        "type": "field"
+      }
+    ]
+  },
   "inbounds": [
     {
-      "tag": "vless-reality",
+      "tag": "VLESS TCP REALITY",
       "listen": "0.0.0.0",
       "port": 443,
       "protocol": "vless",
       "settings": {
-        "clients": [
-          {
-            "id": "00000000-0000-0000-0000-000000000000",
-            "flow": "xtls-rprx-vision",
-            "email": "example-user"
-          }
-        ],
+        "clients": [],
         "decryption": "none"
       },
       "streamSettings": {
         "network": "tcp",
+        "tcpSettings": {},
         "security": "reality",
         "realitySettings": {
           "show": false,
-          "dest": "www.example.com:443",
+          "dest": "www.cloudflare.com:443",
           "xver": 0,
           "serverNames": [
-            "www.example.com"
+            "www.cloudflare.com"
           ],
-          "privateKey": "REPLACE_WITH_SERVER_KEY",
+          "privateKey": "-",
+          "publicKey": "-",
+          "spiderX": "/",
           "shortIds": [
-            "REPLACEID"
+            ""
           ]
         }
       },
       "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ]
+        "enabled": false
       }
     }
   ],
   "outbounds": [
     {
       "protocol": "freedom",
-      "tag": "direct"
+      "tag": "DIRECT"
     },
     {
       "protocol": "blackhole",
-      "tag": "block"
+      "tag": "BLOCK"
     }
   ]
 }
-

@@ -23,13 +23,19 @@ Possible causes:
 
 Cause: client SNI did not match server settings.
 
-Fix: updated the SNI in the client config. After that, normal browsing and bigger files worked better.
+Fix: updated the SNI in the client config. My current example uses `www.cloudflare.com`, so the client should match that if this config is used.
 
 ## Problem: YouTube or image uploads broken
 
 At one point TCP apps worked, like Google and ChatGPT text. But YouTube and uploading images did not work well.
 
 The fix was adding the correct server name in the client.
+
+## Problem: Private IP traffic should not go through
+
+The current config has a routing rule for `geoip:private`.
+
+Traffic to private IP ranges should go to `BLOCK`, not `DIRECT`.
 
 ## Problem: Xray crashed on small VPS
 

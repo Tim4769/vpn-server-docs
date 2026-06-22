@@ -26,23 +26,23 @@ IPv6 was disabled because I only needed IPv4 for this setup.
 
 ## Logging settings
 
-Access logs are disabled.
+Access logs are disabled. Error logs are also disabled in my current config.
 
-Error logs are only kept when debugging. I used settings like this:
+Current log settings:
 
 ```json
 {
   "log": {
     "access": "none",
-    "error": "/var/log/xray/error.log",
-    "loglevel": "warning",
+    "error": "none",
+    "loglevel": "none",
     "dnsLog": false,
     "maskAddress": "full"
   }
 }
 ```
 
-I checked logs with:
+If I am debugging later, I can temporarily turn error logs back on. These are the commands I used before when logs existed:
 
 ```bash
 sudo ls -lah /var/log/xray
@@ -55,6 +55,22 @@ Old logs can be cleared without deleting the file:
 sudo truncate -s 0 /var/log/xray/error.log
 sudo journalctl --vacuum-time=1s
 ```
+
+## Routing privacy
+
+The current config blocks private IP ranges:
+
+```json
+{
+  "ip": [
+    "geoip:private"
+  ],
+  "outboundTag": "BLOCK",
+  "type": "field"
+}
+```
+
+This is to avoid proxy traffic trying to reach private network addresses.
 
 ## Docker log rotation
 
@@ -85,4 +101,3 @@ For Docker, I changed logging so it does not grow forever:
 - subscription links
 - server passwords
 - real client configs
-

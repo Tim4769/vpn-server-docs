@@ -49,7 +49,18 @@ cd ~/xray-setup
 
 The Xray config used port `443` so it looks more like normal HTTPS traffic.
 
-For REALITY, the client SNI needs to match the server setting. One problem I had was that text apps worked but bigger apps or uploads were broken. Adding the right server name in the client fixed it.
+For REALITY, the client SNI needs to match the server setting. My current public example uses `www.cloudflare.com` for the REALITY destination and server name.
+
+Current config notes:
+
+- inbound tag is `VLESS TCP REALITY`
+- inbound listens on `0.0.0.0:443`
+- protocol is `vless`
+- `decryption` is `none`
+- sniffing is disabled
+- private IP traffic is blocked with `geoip:private`
+- normal outbound traffic uses `DIRECT`
+- blocked outbound traffic uses `BLOCK`
 
 ## Marzban notes
 
