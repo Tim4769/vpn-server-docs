@@ -26,6 +26,29 @@ Set up and manage a VPS based VPN/proxy server using Xray, VLESS, REALITY, and c
 
 The RackNerd VPS is mainly the control panel. The AWS and Bandwagon VPSs are the nodes that actually run the proxy traffic.
 
+## Node Details
+
+I kept the real public IPs, VM IDs, and hostnames out of this public README.
+
+The AWS and Bandwagon nodes use the same server idea: Marzban Node, Xray, VLESS, REALITY, SSH on `22`, and proxy traffic on `443`.
+
+| Detail | AWS Lightsail Node | Bandwagon Node |
+| --- | --- | --- |
+| Main role | Marzban node | Marzban node |
+| Provider | AWS Lightsail | BandwagonHost / KiwiVM |
+| Plan / bundle | Lightsail VPS plan, not posted in public notes | KVMV5-20G-1G-1T-CA-CN2GIA |
+| Location | Singapore | US, California |
+| Server type | Linux VPS node | KVM VPS node |
+| Operating system | Ubuntu 24.04 LTS | Ubuntu 26.04 x86_64 |
+| SSH port | 22 | 22 |
+| VPN/proxy port | 443 | 443 |
+| Proxy setup | Xray, VLESS, REALITY | Xray, VLESS, REALITY |
+| Management | Connected to RackNerd Marzban panel | Connected to RackNerd Marzban panel |
+| Memory notes | small VPS, added swap when memory was low | 1 GB RAM, about 545 MB swap |
+| Disk notes | not posted in public notes | 20 GB disk |
+| Bandwidth notes | not posted in public notes | 1 TB monthly bandwidth |
+| Public server info | redacted in public repo | redacted in public repo |
+
 ## Files
 
 - `setup.md` - installation and setup notes
