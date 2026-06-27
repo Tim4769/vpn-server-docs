@@ -19,3 +19,4 @@ These are cleaned notes from my VPN project journal. I removed real links, serve
 - [Jun 20](jun-20.md)
 - [Jun 21](jun-21.md)
 - [Jun 22](jun-22.md)
+- [Jun 25](jun-25.md)
